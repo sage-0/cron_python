@@ -11,5 +11,6 @@ def cronjob(api: str):
     if api == "on":
         job.setall('*/30 * * * *')
     elif api == "off":
-        job.setall(None)
+        if job.is_enabled():
+            job.enable(False)
     cron.write()
