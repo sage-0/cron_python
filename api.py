@@ -9,10 +9,10 @@ def read_root():
     return {"statuscode": "400"}
 
 @app.post("/swich/{switch}")
-def read_item(switch: Union[str, int]):
+def read_item(switch: str):
     if switch == "on":
-        cronjob(switch[0])
+        cronjob(switch)
         return {"statuscode": "400"}
     elif switch == "off":
-        cronjob(switch[0])
+        cronjob(switch)
         return {"statuscode": "400"}
