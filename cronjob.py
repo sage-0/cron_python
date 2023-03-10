@@ -9,7 +9,7 @@ def cronjob(api: str):
             break
 
     if api == "on":
-        job.setall('*/30 * * * *')
+        job.enable(True)
     elif api == "off":
         if job.is_enabled():
             job.enable(False)
