@@ -12,7 +12,7 @@ def read_root():
 def read_item(switch: str):
     if switch == "on":
         cronjob(switch)
-        return {"statuscode": "400"}
+        return "enable"
     elif switch == "off":
         cronjob(switch)
-        return {"statuscode": "400"}
+        return "disable"
