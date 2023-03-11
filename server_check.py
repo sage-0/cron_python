@@ -25,10 +25,6 @@ def check_server(hosts):
             True) if res.returncode == 0 else diedLists.append(False)
     return diedLists
 
-
-
-
-
 for i, r in enumerate(check_server(hosts)):
     if r == False:  # サーバーが死んでいる場合
         time.sleep(10)

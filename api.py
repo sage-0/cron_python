@@ -1,24 +1,29 @@
 from typing import Union
 from fastapi import FastAPI
-from cronjob import cronjob
-from cronjob import cronstatus
+from cronjob import cron_job
+from cronjob import cron_status
 
 app = FastAPI()
 
 @app.get("/")
 def read_root():
-    if cronstatus() == True:
-        return "enable"
-    elif cronstatus() == False:
-        return "disable"
-    elif cronstatus() == "error: job not found":
-        return "error: job not found"
+    status = cron_status()
+    if isinstance(status, bool):
+        return "enable" if status else "disable"
+    else:
+        return status
 
-@app.post("/swich/{switch}")
+@app.post("/switch/{switch}")
 def read_item(switch: str):
     if switch == "on":
-        cronjob(switch)
-        return "enable"
+        status = cron_job(switch)
+        if status == "success":
+            return "enable"
+        else:
+            return status
     elif switch == "off":
-        cronjob(switch)
-        return "disable"
+        status = cron_job(switch)
+        if status == "success":
+            return "disable"
+        else:
+            return status
