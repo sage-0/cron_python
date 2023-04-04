@@ -17,13 +17,13 @@ def read_root():
 def read_item(switch: str):
     if switch == "on":
         status = cron_job(switch)
-        if status == "success":
+        if status == "success: job enabled":
             return "enable"
         else:
             return status
     elif switch == "off":
         status = cron_job(switch)
-        if status == "success":
+        if status == "success: job disabled":
             return "disable"
         else:
             return status
