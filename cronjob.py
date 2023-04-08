@@ -30,15 +30,10 @@ def cron_job(api):
                     job.enable(True)
                     cron.write()
                     return "success: job enabled"
-                else:
-                    return "job already enabled"
-            
             elif api == "off":
                 if job.is_enabled():
                     job.enable(False)
                     cron.write()
                     return "success: job disabled"
-                else:
-                    return "job already disabled"
             else:
                 "error: invalid input"
