@@ -19,11 +19,7 @@ def read_item(switch: str):
         status = cron_job(switch)
         if status == "success: job enabled":
             return "enable"
-        else:
-            return status
     elif switch == "off":
         status = cron_job(switch)
         if status == "success: job disabled":
             return "disable"
-        else:
-            return status
